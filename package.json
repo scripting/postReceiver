@@ -1,0 +1,9 @@
+{
+	"name": "postreceiver",
+	"version": "0.4.0",
+	"main": "postreceiver.js",
+	"dependencies" : {
+		"daveutils": "*",
+		"davehttp": "*"
+		} 
+	}
