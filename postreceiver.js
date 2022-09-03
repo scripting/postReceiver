@@ -1,4 +1,4 @@
-const myVersion = "0.4.0", myProductName = "postreceiver"; 
+const myVersion = "0.4.1", myProductName = "postreceiver"; 
 
 const fs = require ("fs");
 const utils = require ("daveutils");
@@ -38,6 +38,10 @@ readConfig ("config.json", config, function () {
 		function returnText (theText) {
 			theRequest.httpReturn (200, "text/plain", theText);
 			}
+		function handleUppercase () {
+			console.log ("handleUppercase: theRequest.sysRequest.headers == " + utils.jsonStringify (theRequest.sysRequest.headers));
+			returnText (utils.stringUpper (theRequest.postBody));
+			}
 		switch (theRequest.lowermethod) {
 			case "get":
 				switch (theRequest.lowerpath) {
@@ -51,7 +55,7 @@ readConfig ("config.json", config, function () {
 			case "post": 
 				switch (theRequest.lowerpath) {
 					case "/uppercase": 
-						returnText (utils.stringUpper (theRequest.postBody));
+						handleUppercase ();
 						return;
 					default: 
 						return404 ();
